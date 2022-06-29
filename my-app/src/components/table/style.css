@@ -1,0 +1,10 @@
+td {
+    border: 1px black dashed;
+    border-radius: 10px;
+}
+
+.table-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
