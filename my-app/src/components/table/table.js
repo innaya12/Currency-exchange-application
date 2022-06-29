@@ -15,11 +15,14 @@ function Table() {
                         <th>Current exchange rate</th>
                         <th>Last exchange rate</th>
                     </tr>
-                    {currentExchangeRate && Object.entries(currentExchangeRate).map(([key, value]) => (
+                    {currentExchangeRate && Object.entries(currentExchangeRate).map(([key1, value1]) => (
                     <Fragment>
                         <tr>
-                            <td>{key}</td>
-                            <td>{value}</td>
+                            <td>{key1}</td>
+                            <td>{value1}</td>
+                            {Object.entries(lastExchangeRate).map(([key2, value2]) => (
+                                key1 === key2 && <td>{value2}</td>
+                            ))}
                         </tr>
                     </Fragment>
                     ))}
