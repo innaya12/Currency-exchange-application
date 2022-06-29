@@ -1,31 +1,34 @@
-import React, { useContext, Fragment } from 'react';
+import React, { useState, useContext } from 'react';
 import { TableContext } from '../../pages/home/home';
 import './style.css';
 
 function Table() {
-    const { currentExchangeRate, lastExchangeRate } = useContext(TableContext);
+    const { currentExchangeRate, lastExchangeRate, symbolsOptions } = useContext(TableContext);
+    const [selectedCurrency, setSelectedCurrency] = useState([])
 
     return(
         <div>
-            <h4> 1 EUR</h4>
+            <p>1 EUR equals to</p> 
+            <select onChange={(event) =>setSelectedCurrency([...selectedCurrency, event.target.value])}>{symbolsOptions}</select>
             <div className="table-wrapper">
                 <table>
-                    <tr>
-                        <th>Currency</th>
-                        <th>Current exchange rate</th>
-                        <th>Last exchange rate</th>
-                    </tr>
-                    {currentExchangeRate && Object.entries(currentExchangeRate).map(([key1, value1]) => (
-                    <Fragment>
+                    <thead> 
                         <tr>
-                            <td>{key1}</td>
-                            <td>{value1}</td>
-                            {Object.entries(lastExchangeRate).map(([key2, value2]) => (
-                                key1 === key2 && <td>{value2}</td>
-                            ))}
+                            <th>Currency</th>
+                            <th>Current exchange rate</th>
+                            <th>Last exchange rate</th>
                         </tr>
-                    </Fragment>
-                    ))}
+                    </thead> 
+                    <tbody>
+                        {selectedCurrency.map((code) => {
+                            return(
+                            <tr key={code}>
+                                <td>{code}</td>
+                                <td>{currentExchangeRate[code]}</td>
+                                <td>{lastExchangeRate[code]}</td>
+                            </tr>
+                            )})}
+                    </tbody>
                 </table>
             </div>
         </div>
