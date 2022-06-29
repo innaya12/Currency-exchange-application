@@ -11,6 +11,7 @@ function Table() {
             <p>1 EUR equals to</p> 
             <select onChange={(event) =>setSelectedCurrency([...selectedCurrency, event.target.value])}>{symbolsOptions}</select>
             <div className="table-wrapper">
+                {selectedCurrency.length > 0 &&
                 <table>
                     <thead> 
                         <tr>
@@ -30,6 +31,7 @@ function Table() {
                             )})}
                     </tbody>
                 </table>
+                }
             </div>
         </div>
     )
