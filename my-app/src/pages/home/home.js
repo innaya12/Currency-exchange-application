@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect, createContext } from "react";
+import axios from 'axios';
+import Table from "../../components/table";
 import './style.css';
 
-const Home = () => {
-    return (
-        <div>
-            <h1>Home</h1>
-        </div>
+export const TableContext = createContext("Default");
 
+function Home() {
+    const [tableData, setTableData] = useState([]);
+
+    useEffect(() => {
+        axios
+        .get("https://api.exchangerate.host/latest")
+        .then((response) => setTableData(response.data.rates));
+    }, []);
+
+    return(
+        <TableContext.Provider value={tableData}>
+            <h2>Currency exchange application</h2>
+            <Table/>
+        </TableContext.Provider>
     )
 }
 
