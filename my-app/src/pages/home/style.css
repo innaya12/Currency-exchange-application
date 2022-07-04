@@ -1,9 +1,13 @@
 .convert-wrapper {
-    margin: 25px auto;
+    margin: 4px 25px;
     display: flex;
-    justify-content: center;
 }
 
 select {
     margin: 0 6px;
+}
+
+.add-button {
+    text-align: right;
+    margin: 0 20px;
 }
