@@ -1,28 +1,16 @@
 import React, { useState, useEffect, createContext } from "react";
 import axios from 'axios';
 import Table from "../../components/table/table";
-import { getYesterdaysDate } from '../../data/getDate';
+// import { getYesterdaysDate } from '../../data/getDate';
 import './style.css';
 
 export const TableContext = createContext("Default");
 
 function Home() {
-    const [currentExchangeRate, setCurrentExchangeRate] = useState([]);
-    const [lastExchangeRate, setLastExchangeRate] = useState([]);
+    // const [lastExchangeRate, setLastExchangeRate] = useState([]);
     const [symbols, setSymbols] = useState([]);
-    const yesterdayDate = getYesterdaysDate();
-    
-    useEffect(() => {
-        axios
-        .get("https://api.exchangerate.host/latest")
-        .then((response) => setCurrentExchangeRate(response.data.rates));
-    }, []);
-
-    useEffect(() => {
-        axios
-        .get(`https://api.exchangerate.host/${yesterdayDate}`)
-        .then((response) => setLastExchangeRate(response.data.rates));
-    }, []);
+    // const yesterdayDate = getYesterdaysDate();
+    // const [selectedCurrency, setSelectedCurrency] = useState([])
 
     useEffect(() => {
         axios
@@ -34,8 +22,9 @@ function Home() {
         <option key={key} value={key}>{key}</option>
     ) 
 
+    
     return(
-        <TableContext.Provider value={{ currentExchangeRate, lastExchangeRate, symbolsOptions }}>
+        <TableContext.Provider value={{ symbolsOptions }}>
             <h2>Currency exchange application</h2>
             <Table/>
         </TableContext.Provider>
