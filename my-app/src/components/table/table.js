@@ -11,22 +11,22 @@ function Table() {
 
     const handleCurrency = (e) => {
         console.log('submit');
-        e.preventDefault();
         axios
         .get(`https://api.exchangerate.host/convert?from=${fromCurrency}&to=${toCurrency}`)
         .then((response) => setCurrentExchangeRate(response.data.result));
     }
-
     return(
         <div>
             <div className="convert-wrapper">
-            <p>1</p> 
-            <select onChange={(event) =>setFromCurrency(event.target.value)}>{symbolsOptions} is equl to</select>
-            <p>equals to</p> 
-            <select onChange={(event) =>setToCurrency(event.target.value)}>{symbolsOptions}</select>
-            <p className="toP">{currentExchangeRate}</p> 
+                <p>1</p> 
+                <select onChange={(event) =>setFromCurrency(event.target.value)}>{symbolsOptions} is equl to</select>
+                <p>equals to</p> 
+                <select onChange={(event) =>setToCurrency(event.target.value)}>{symbolsOptions}</select>
+                <p className="toP">{currentExchangeRate}</p> 
             </div>
-            <button onClick={e => handleCurrency(e)}> submit</button>
+            <div className="submit-button">        
+               <button onClick={e => handleCurrency(e)}>submit</button>
+            </div>
         </div>
     )
 }

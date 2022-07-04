@@ -18,3 +18,7 @@ table {
 .remove-row {
     cursor: pointer;
 }
+
+.submit-button {
+    text-align: end;
+}
