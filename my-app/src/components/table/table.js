@@ -11,6 +11,7 @@ function Table() {
             <p>1 EUR equals to</p> 
             <select onChange={(event) =>setSelectedCurrency([...selectedCurrency, event.target.value])}>{symbolsOptions}</select>
             <div className="table-wrapper">
+                {selectedCurrency.length > 0 &&
                 <table>
                     <thead> 
                         <tr>
@@ -26,10 +27,12 @@ function Table() {
                                 <td>{code}</td>
                                 <td>{currentExchangeRate[code]}</td>
                                 <td>{lastExchangeRate[code]}</td>
+                                <td onClick={event => setSelectedCurrency(selectedCurrency.filter(item => item !== code))} className="remove-row">remove</td>
                             </tr>
                             )})}
                     </tbody>
                 </table>
+                }
             </div>
         </div>
     )

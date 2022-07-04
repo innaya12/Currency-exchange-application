@@ -14,3 +14,7 @@ table {
     justify-content: center;
     margin-top: 25px;
 }
+
+.remove-row {
+    cursor: pointer;
+}
