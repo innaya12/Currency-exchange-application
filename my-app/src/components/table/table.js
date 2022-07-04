@@ -27,6 +27,7 @@ function Table() {
                                 <td>{code}</td>
                                 <td>{currentExchangeRate[code]}</td>
                                 <td>{lastExchangeRate[code]}</td>
+                                <td onClick={event => setSelectedCurrency(selectedCurrency.filter(item => item !== code))} className="remove-row">remove</td>
                             </tr>
                             )})}
                     </tbody>
