@@ -33,14 +33,24 @@ function Home() {
     ) 
     
     return(
-        <TableContext.Provider value={{ symbolsOptions }}>
-            <h2>Currency exchange application</h2>
-            <div className="add-button">
-                <button onClick={onAddBtnClick}>Add</button>
-                <button onClick={onRemoveBtnClick}>Remove</button>
-            </div>
-            {tableList}
-        </TableContext.Provider>
+    <TableContext.Provider value={{ symbolsOptions }}>
+        <h2>Currency exchange application</h2>
+        <div className="buttons">
+            {count > 0 && <button onClick={onRemoveBtnClick}>Remove</button>}
+            <button onClick={onAddBtnClick}>Add</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Convert 1 </th>
+                    <th>to</th>
+                    <th>Current rate</th>
+                    <th>Last rate</th>
+                </tr>
+            </thead>
+        {tableList}
+        </table>
+    </TableContext.Provider>
     )
 }
 
