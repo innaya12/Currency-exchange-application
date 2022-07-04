@@ -15,7 +15,6 @@ function Table() {
         .get(`https://api.exchangerate.host/convert?from=${fromCurrency}&to=${toCurrency}`)
         .then((response) => setCurrentExchangeRate(response.data.result));
     }
-
     return(
         <div>
             <div className="convert-wrapper">
@@ -25,7 +24,9 @@ function Table() {
                 <select onChange={(event) =>setToCurrency(event.target.value)}>{symbolsOptions}</select>
                 <p className="toP">{currentExchangeRate}</p> 
             </div>
-            <button onClick={e => handleCurrency(e)}> submit</button>
+            <div className="submit-button">        
+               <button onClick={e => handleCurrency(e)}>submit</button>
+            </div>
         </div>
     )
 }
