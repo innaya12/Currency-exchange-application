@@ -1,0 +1,9 @@
+.convert-wrapper {
+    margin: 25px auto;
+    display: flex;
+    justify-content: center;
+}
+
+select {
+    margin: 0 6px;
+}
